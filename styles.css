@@ -73,6 +73,8 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -83,6 +85,24 @@ body {
   overflow-x: hidden;
   position: relative;
   transition: background-color var(--transition-normal), color var(--transition-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* GPU-Accelerated Mobile Smooth Scroll Reveal Engine */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translate3d(0, 32px, 0);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
 
 /* Background Ambient Canvas Glow */
@@ -95,14 +115,17 @@ body {
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
+  will-change: transform;
 }
 
 .glow-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.3;
-  animation: orbFloat 18s ease-in-out infinite alternate;
+  filter: blur(100px);
+  opacity: 0.25;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  animation: orbFloat 20s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
 }
 
 .glow-orb-1 {
@@ -133,9 +156,14 @@ body {
 }
 
 @keyframes orbFloat {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(60px, 40px) scale(1.1); }
-  100% { transform: translate(-40px, 80px) scale(0.95); }
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  50%  { transform: translate3d(30px, 20px, 0) scale(1.05); }
+  100% { transform: translate3d(-20px, 40px, 0) scale(0.97); }
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translate3d(0, 28px, 0); }
+  to   { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
 /* Layout Utilities */
@@ -216,8 +244,7 @@ section {
 }
 
 .btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(6, 182, 212, 0.5);
+  /* handled in hover media query */
 }
 
 .btn-secondary {
@@ -231,7 +258,7 @@ section {
   background: var(--bg-card-hover);
   border-color: var(--accent-cyan);
   color: var(--accent-cyan);
-  transform: translateY(-3px);
+  /* transform handled in hover media query */
 }
 
 .btn-icon {
@@ -249,9 +276,13 @@ section {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: 32px;
-  transition: all var(--transition-normal);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal), transform var(--transition-normal);
   position: relative;
   overflow: hidden;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .glass-card::before {
@@ -266,14 +297,26 @@ section {
   transition: opacity var(--transition-fast);
 }
 
-.glass-card:hover {
-  border-color: var(--border-glow);
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
-}
-
-.glass-card:hover::before {
-  opacity: 1;
+/* Hover only on pointer devices (no touch jank) */
+@media (hover: hover) and (pointer: fine) {
+  .glass-card:hover {
+    border-color: var(--border-glow);
+    transform: translate3d(0, -6px, 0);
+    box-shadow: var(--shadow-lg);
+  }
+  .glass-card:hover::before {
+    opacity: 1;
+  }
+  .btn-primary:hover {
+    transform: translate3d(0, -3px, 0);
+    box-shadow: 0 8px 30px rgba(6, 182, 212, 0.5);
+  }
+  .btn-secondary:hover {
+    transform: translate3d(0, -3px, 0);
+  }
+  .contact-card-item:hover {
+    transform: translateX(8px);
+  }
 }
 
 /* Navbar */
@@ -1241,6 +1284,54 @@ img, video, iframe, svg {
 
   .section-title {
     font-size: 2.1rem;
+  }
+}
+
+/* Contact card item base (no hover on touch) */
+.contact-card-item {
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+  will-change: transform;
+}
+
+/* Accessibility: Respect OS reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .glow-orb {
+    animation: none !important;
+  }
+  .floating-badge {
+    animation: none !important;
+  }
+  .avatar-frame {
+    animation: none !important;
+  }
+}
+
+/* Mobile-specific: disable heavy hover transforms and animations */
+@media (max-width: 768px) {
+  .glow-orb {
+    filter: blur(60px);
+    opacity: 0.15;
+  }
+  .glow-orb-1 { width: 280px; height: 280px; }
+  .glow-orb-2 { width: 320px; height: 320px; }
+  .glow-orb-3 { width: 240px; height: 240px; }
+
+  .avatar-frame {
+    animation: framePulse 8s ease-in-out infinite alternate;
+  }
+  .floating-badge {
+    animation: badgeFloat 6s ease-in-out infinite alternate;
   }
 }
 

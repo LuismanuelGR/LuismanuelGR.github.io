@@ -290,26 +290,79 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ----------------------------------------------------
-  // 11. Active Nav Link Scroll Spy
+  // 11. Smooth Scroll Reveal Engine (IntersectionObserver)
+  //     Works on Android, iOS, Tablet and PC
+  // ----------------------------------------------------
+
+  // Mark all revealable elements
+  const revealTargets = document.querySelectorAll(
+    'section, .glass-card, .course-card, .tool-card, .timeline-card, .floating-badge, .hero-stats, .stat-card, .contact-card-item, .degree-card'
+  );
+
+  // Staggered delay per card inside grids
+  const staggerParents = document.querySelectorAll('.tools-grid, .courses-grid, .hero-stats, .about-grid, .contact-grid');
+  staggerParents.forEach(parent => {
+    Array.from(parent.children).forEach((child, i) => {
+      child.style.transitionDelay = `${i * 80}ms`;
+    });
+  });
+
+  revealTargets.forEach(el => {
+    el.classList.add('reveal-on-scroll');
+  });
+
+  // Check if user prefers reduced motion
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reducedMotion) {
+    // Skip animations entirely
+    revealTargets.forEach(el => el.classList.add('is-visible'));
+  } else {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          // Unobserve once visible to free resources on mobile
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealTargets.forEach(el => revealObserver.observe(el));
+  }
+
+  // ----------------------------------------------------
+  // 12. Active Nav Link Scroll Spy (passive + debounced)
   // ----------------------------------------------------
   const sections = document.querySelectorAll('section');
   const navLinks = document.querySelectorAll('.nav-link');
+  let scrollTicking = false;
 
   window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 150;
-      if (window.scrollY >= sectionTop) {
-        current = section.getAttribute('id');
-      }
-    });
+    if (!scrollTicking) {
+      window.requestAnimationFrame(() => {
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 160;
+          if (window.scrollY >= sectionTop) {
+            current = section.getAttribute('id');
+          }
+        });
 
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
-    });
-  });
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+
+        scrollTicking = false;
+      });
+      scrollTicking = true;
+    }
+  }, { passive: true });
 
 });
