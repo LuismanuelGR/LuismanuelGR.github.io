@@ -90,14 +90,11 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-/* GPU-Accelerated Mobile Smooth Scroll Reveal Engine */
+/* Scroll Reveal Engine — GPU-safe */
 .reveal-on-scroll {
   opacity: 0;
-  transform: translate3d(0, 32px, 0);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+  transform: translate3d(0, 20px, 0);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
 .reveal-on-scroll.is-visible {
@@ -105,7 +102,7 @@ body {
   transform: translate3d(0, 0, 0);
 }
 
-/* Background Ambient Canvas Glow */
+/* Background Ambient Canvas Glow — desktop only */
 .bg-glow-container {
   position: fixed;
   top: 0;
@@ -115,17 +112,15 @@ body {
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
-  will-change: transform;
 }
 
 .glow-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.25;
-  will-change: transform;
+  filter: blur(80px);
+  opacity: 0.22;
   transform: translate3d(0, 0, 0);
-  animation: orbFloat 20s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+  animation: orbFloat 24s ease-in-out infinite alternate;
 }
 
 .glow-orb-1 {
@@ -251,7 +246,7 @@ section {
   background: var(--bg-card);
   color: var(--text-primary);
   border: 1px solid var(--border-color);
-  backdrop-filter: blur(12px);
+  /* backdrop-filter only on desktop for performance */
 }
 
 .btn-secondary:hover {
@@ -279,10 +274,7 @@ section {
   transition: border-color var(--transition-normal), box-shadow var(--transition-normal), transform var(--transition-normal);
   position: relative;
   overflow: hidden;
-  will-change: transform;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+  contain: layout style;
 }
 
 .glass-card::before {
@@ -1148,11 +1140,19 @@ img, video, iframe, svg {
   }
 }
 
-/* Mobile Phones & Android Devices (<= 768px) */
+/* Mobile Phones & Android/iOS Devices (<= 768px) — PERFORMANCE MODE */
 @media (max-width: 768px) {
   .navbar {
     padding: 10px 20px;
     width: 94%;
+    /* Remove expensive blur on mobile navbar */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: var(--bg-secondary);
+  }
+
+  [data-theme="light"] .navbar {
+    background: rgba(248, 250, 252, 0.97);
   }
 
   .nav-menu {
@@ -1180,6 +1180,47 @@ img, video, iframe, svg {
     justify-content: center;
     width: 40px;
     height: 40px;
+  }
+
+  /* Kill orbs on mobile — biggest perf win */
+  .glow-orb {
+    display: none;
+  }
+
+  /* Remove backdrop-filter from ALL glass elements */
+  .glass-card,
+  .floating-badge,
+  .btn-secondary {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: var(--bg-secondary);
+  }
+
+  [data-theme="light"] .glass-card,
+  [data-theme="light"] .floating-badge {
+    background: #ffffff;
+  }
+
+  /* Stop floating badge animations on mobile */
+  .floating-badge {
+    animation: none;
+  }
+
+  /* Simpler avatar frame pulse */
+  .avatar-frame {
+    animation: none;
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+  }
+
+  /* Faster, shorter reveal animation */
+  .reveal-on-scroll {
+    transform: translate3d(0, 12px, 0);
+    transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+  }
+
+  /* No stagger on mobile — all at once */
+  .tools-grid > *, .courses-grid > *, .hero-stats > *, .about-grid > *, .contact-grid > * {
+    transition-delay: 0ms !important;
   }
 
   .hero {
@@ -1232,6 +1273,12 @@ img, video, iframe, svg {
 
   .tools-grid, .courses-grid {
     grid-template-columns: 1fr;
+  }
+
+  .modal-overlay {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(7, 9, 14, 0.92);
   }
 
   .modal-container {
@@ -1287,10 +1334,9 @@ img, video, iframe, svg {
   }
 }
 
-/* Contact card item base (no hover on touch) */
+/* Contact card item base */
 .contact-card-item {
   transition: transform var(--transition-fast), border-color var(--transition-fast);
-  will-change: transform;
 }
 
 /* Accessibility: Respect OS reduced-motion preference */
@@ -1317,23 +1363,7 @@ img, video, iframe, svg {
   }
 }
 
-/* Mobile-specific: disable heavy hover transforms and animations */
-@media (max-width: 768px) {
-  .glow-orb {
-    filter: blur(60px);
-    opacity: 0.15;
-  }
-  .glow-orb-1 { width: 280px; height: 280px; }
-  .glow-orb-2 { width: 320px; height: 320px; }
-  .glow-orb-3 { width: 240px; height: 240px; }
 
-  .avatar-frame {
-    animation: framePulse 8s ease-in-out infinite alternate;
-  }
-  .floating-badge {
-    animation: badgeFloat 6s ease-in-out infinite alternate;
-  }
-}
 
 /* Print Stylesheet for PDF Export */
 @media print {
