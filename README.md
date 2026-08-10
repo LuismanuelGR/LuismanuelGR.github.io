@@ -1,5 +1,3 @@
-# LuismanuelGR.github.io
-Portafolio Digital
 <div align="center">
 
   # 🚀 ¡Hola! Soy Luis Manuel García Rivero 👨‍💻
