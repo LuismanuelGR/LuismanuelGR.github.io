@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luis Manuel García Rivero | Ingeniero en Información - Portafolio Interactivo</title>
+  <meta name="description"
+    content="Portafolio profesional interactivo de Luis Manuel García Rivero. Ingeniero en Información, especialista en optimización, automatización de procesos y liderazgo de proyectos.">
+  <meta name="keywords"
+    content="Luis Manuel Garcia Rivero, Ingeniero en Informacion, Portafolio, SISPRO, Papeles Venezolanos, Vida UNITEC, Valencia Venezuela">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Background Ambient Glow -->
+  <div class="bg-glow-container">
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
+    <div class="glow-orb glow-orb-3"></div>
+  </div>
+
+  <!-- Floating Glass Navbar -->
+  <nav class="navbar">
+    <a href="#hero" class="nav-brand">
+      <i class="fa-solid fa-code text-gradient"></i>
+      <span>Luis Manuel <span class="nav-brand-tag">&lt;Rivero /&gt;</span></span>
+    </a>
+
+    <ul class="nav-menu" id="nav-menu">
+      <li><a href="#about" class="nav-link">Sobre Mí</a></li>
+      <li><a href="#timeline" class="nav-link">Trayectoria</a></li>
+      <li><a href="#projects-degrees" class="nav-link">Logros</a></li>
+      <li><a href="#skills" class="nav-link">Habilidades</a></li>
+      <li><a href="#courses" class="nav-link">Cursos</a></li>
+      <li><a href="#contact" class="nav-link">Contacto</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="theme-toggle-btn" id="theme-toggle" title="Cambiar Tema (Oscuro/Claro)">
+        <i class="fa-solid fa-moon" id="theme-icon"></i>
+      </button>
+      <a href="CV_Luis_Manuel_Garcia_Rivero.pdf" target="_blank" download="CV_Luis_Manuel_Garcia_Rivero.pdf" class="btn btn-secondary btn-icon" id="download-cv-btn" title="Descargar CV Completo (PDF)">
+        <i class="fa-solid fa-file-pdf"></i>
+      </a>
+      <button class="mobile-toggle" id="mobile-toggle">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge-group">
+            <span class="hero-pill">
+              <i class="fa-solid fa-graduation-cap"></i> Ingeniero en Información
+            </span>
+            <span class="hero-pill"
+              style="background: rgba(6, 182, 212, 0.12); color: #06b6d4; border-color: rgba(6, 182, 212, 0.3);">
+              <i class="fa-solid fa-shield-halved"></i> Gestión &amp; TI
+            </span>
+          </div>
+
+          <h1 class="hero-title">
+            Luis Manuel <br>
+            <span class="text-gradient">García Rivero</span>
+          </h1>
+
+          <p class="hero-bio">
+            Especialista en la creación de aplicaciones web orientadas a la optimización y automatización de procesos
+            empresariales. Cuento con sólida experiencia en la gestión integral de proyectos, desde su planificación
+            hasta la implementación en organizaciones de diversa escala.
+          </p>
+
+          <div class="hero-contact-info">
+            <div class="info-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Valencia, Venezuela</span>
+            </div>
+            <div class="info-item">
+              <i class="fa-solid fa-envelope"></i>
+              <span>luismanuel1402@gmail.com</span>
+            </div>
+            <div class="info-item">
+              <i class="fa-solid fa-phone"></i>
+              <span>(+58) 424-4598847</span>
+            </div>
+          </div>
+
+          <div class="hero-cta">
+            <a href="#timeline" class="btn btn-primary">
+              <i class="fa-solid fa-rocket"></i> Explorar Trayectoria
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+              <i class="fa-solid fa-paper-plane"></i> Contactar
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-avatar-wrapper">
+          <div class="avatar-frame">
+            <img src="luis_headshot.png" alt="Luis Manuel García Rivero" class="avatar-img">
+          </div>
+
+          <div class="floating-badge badge-top">
+            <i class="fa-solid fa-award"></i>
+            <div>
+              <h4>Promedio Destacado</h4>
+              <p>UNIVERSIDAD TECNOLÓGICA DEL CENTRO</p>
+            </div>
+          </div>
+
+          <div class="floating-badge badge-bottom">
+            <i class="fa-solid fa-users-gear"></i>
+            <div>
+              <h4>Coordinador General</h4>
+              <p>Vida UNITEC (2025 - 2026)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric Counter Cards -->
+        <div class="hero-stats">
+          <div class="glass-card stat-card">
+            <div class="stat-number" data-target="4">0</div>
+            <div class="stat-label">Años de Liderazgo Institucional</div>
+          </div>
+          <div class="glass-card stat-card">
+            <div class="stat-number" data-target="100">%</div>
+            <div class="stat-label">Compromiso en Gestión de TI</div>
+          </div>
+          <div class="glass-card stat-card">
+            <div class="stat-number" data-target="5">0</div>
+            <div class="stat-label">Cursos de Especialización</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About & Education Section -->
+  <section id="about">
+    <div class="container">
+      <span class="section-tag">
+        <i class="fa-solid fa-user-gear"></i> Perfil Académico &amp; Profesional
+      </span>
+      <h2 class="section-title">Formación Académica &amp; Investigación</h2>
+      <p class="section-subtitle">
+        Miembro activo del Equipo de Proyectos Vida UNITEC dentro de la Línea de Investigación de Capital Humano,
+        desempeñando roles desde Estudiante hasta Coordinador General.
+      </p>
+
+      <div class="about-grid">
+        <div class="glass-card">
+          <h3><i class="fa-solid fa-graduation-cap text-gradient" style="margin-right: 10px;"></i> Estudios
+            Universitarios</h3>
+
+          <div class="degree-card">
+            <div class="degree-title">Ingeniería en Información</div>
+            <div class="degree-meta">
+              <span><i class="fa-solid fa-building-columns"></i> UNIVERSIDAD TECNOLÓGICA DEL CENTRO</span>
+              <span><i class="fa-solid fa-calendar"></i> 2026</span>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+              Especialización en sistemas de información, bases de datos, desarrollo web y optimización de
+              infraestructura informática.
+            </p>
+          </div>
+
+          <div class="degree-card" style="border-left-color: var(--accent-violet); margin-top: 20px;">
+            <div class="degree-title">Técnico Superior en Informática</div>
+            <div class="degree-meta" style="color: var(--accent-violet);">
+              <span><i class="fa-solid fa-certificate"></i> Graduación TSU</span>
+              <span><i class="fa-solid fa-calendar"></i> Diciembre 2024</span>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+              Culminado con <strong>promedio destacado</strong> en el área de estudio.
+            </p>
+          </div>
+
+          <div class="degree-card" style="border-left-color: var(--text-muted); margin-top: 20px;">
+            <div class="degree-title">Bachiller en Ciencias</div>
+            <div class="degree-meta" style="color: var(--text-muted);">
+              <span><i class="fa-solid fa-school"></i> UNIDAD EDUCATIVA COLEGIO EL TRIGAL</span>
+              <span><i class="fa-solid fa-calendar"></i> 2021</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card" id="projects-degrees">
+          <h3><i class="fa-solid fa-award text-gradient" style="margin-right: 10px;"></i> Trabajos &amp; Asignaciones
+            Especiales de Grado</h3>
+
+          <!-- Asignación Especial de Grado: SISPRO -->
+          <div class="degree-card" style="border-left-color: var(--accent-cyan); margin-top: 20px;">
+            <span class="hero-pill" style="margin-bottom: 12px; padding: 4px 12px; font-size: 0.8rem;">
+              <i class="fa-solid fa-building"></i> Papeles Venezolanos, C.A.
+            </span>
+            <div class="degree-title" style="font-size: 1.15rem; margin-top: 6px;">
+              Asignación Especial de Grado: Sistema SISPRO
+            </div>
+            <h4 style="font-size: 1rem; font-weight: 600; color: var(--text-primary); margin: 8px 0; line-height: 1.4;">
+              Implementación del Sistema SISPRO en las Áreas Productivas para la Mejora y Automatización de Procesos en
+              la Empresa Papeles Venezolanos, C.A.
+            </h4>
+            <p style="color: var(--text-secondary); margin-bottom: 14px; font-size: 0.9rem;">
+              Proyecto industrial de alto impacto orientado al diagnóstico, digitalización y automatización de la
+              recolección de datos y monitoreo operacional en plantas productivas.
+            </p>
+            <div class="sispro-tags">
+              <span class="tag-pill"><i class="fa-solid fa-gears"></i> Automatización</span>
+              <span class="tag-pill"><i class="fa-solid fa-chart-line"></i> Mejora Continua</span>
+              <span class="tag-pill"><i class="fa-solid fa-code"></i> Desarrollo Web</span>
+              <span class="tag-pill"><i class="fa-solid fa-database"></i> Gestión TI</span>
+            </div>
+          </div>
+
+          <!-- Trabajo Especial de Grado: Iglesia Cristo el Redentor -->
+          <div class="degree-card" style="border-left-color: var(--accent-violet); margin-top: 24px;">
+            <span class="hero-pill"
+              style="background: rgba(139, 92, 246, 0.12); color: #a78bfa; border-color: rgba(139, 92, 246, 0.3); margin-bottom: 12px; padding: 4px 12px; font-size: 0.8rem;">
+              <i class="fa-solid fa-church"></i> I.C.E. Cristo el Redentor
+            </span>
+            <div class="degree-title" style="font-size: 1.15rem; margin-top: 6px; color: var(--accent-violet);">
+              Trabajo Especial de Grado
+            </div>
+            <h4 style="font-size: 1rem; font-weight: 600; color: var(--text-primary); margin: 8px 0; line-height: 1.4;">
+              Propuesta de una Aplicación Web utilizando Plataformas Digitales para el Mejoramiento de los Procesos
+              Internos de la Iglesia Cristiana Evangélica Cristo el Redentor
+            </h4>
+            <p style="color: var(--text-secondary); margin-bottom: 14px; font-size: 0.9rem;">
+              Diseño y propuesta tecnológica de una solución web integral orientada a la digitalización, centralización
+              de información y optimización continua de la gestión organizativa.
+            </p>
+            <div class="sispro-tags">
+              <span class="tag-pill"><i class="fa-solid fa-laptop-code"></i> Aplicación Web</span>
+              <span class="tag-pill"><i class="fa-solid fa-cloud"></i> Plataformas Digitales</span>
+              <span class="tag-pill"><i class="fa-solid fa-sitemap"></i> Procesos Internos</span>
+              <span class="tag-pill"><i class="fa-solid fa-arrows-spin"></i> Transformación Digital</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Timeline Section -->
+  <section id="timeline">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 40px;">
+        <span class="section-tag">
+          <i class="fa-solid fa-clock-rotate-left"></i> Evolución Profesional &amp; Institucional
+        </span>
+        <h2 class="section-title">Trayectoria &amp; Experiencia</h2>
+        <p class="section-subtitle" style="margin: 0 auto;">
+          Navega entre mi experiencia laboral en empresas y mi trayectoria de liderazgo en Vida UNITEC.
+        </p>
+      </div>
+
+      <div class="timeline-controls">
+        <button class="tab-btn active" id="tab-work" data-target="work">
+          <i class="fa-solid fa-briefcase"></i> Experiencia Laboral
+        </button>
+        <button class="tab-btn" id="tab-unitec" data-target="unitec">
+          <i class="fa-solid fa-sitemap"></i> Línea de Tiempo Vida UNITEC
+        </button>
+      </div>
+
+      <!-- Container for Work Experience -->
+      <div class="timeline-wrapper" id="timeline-work-content">
+
+        <div class="timeline-item">
+          <div class="timeline-node"></div>
+          <div class="timeline-date">2025 - 2026</div>
+          <div class="glass-card timeline-card">
+            <span class="hero-pill" style="margin-bottom: 10px;">Papeles Venezolanos C.A.</span>
+            <h3>Pasante de TI</h3>
+            <p style="color: var(--text-secondary); margin: 10px 0; font-size: 0.95rem;">
+              Desarrollo de proyectos en el departamento de TI para la implementación de nuevos sistemas informáticos y
+              herramientas avanzadas de gestión empresarial.
+            </p>
+            <ul style="color: var(--text-secondary); padding-left: 20px; font-size: 0.9rem;">
+              <li>Seguimiento integral de proyectos de software</li>
+              <li>Programación y desarrollo de aplicaciones</li>
+              <li>Implementación y soporte de herramientas de ofimática</li>
+              <li>Automatización de procesos productivos</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-node"></div>
+          <div class="timeline-date">2023 - 2026</div>
+          <div class="glass-card timeline-card">
+            <span class="hero-pill"
+              style="background: rgba(6, 182, 212, 0.12); color: #06b6d4; margin-bottom: 10px;">UNITEC</span>
+            <h3>Preparador y Coordinador</h3>
+            <p style="color: var(--text-secondary); margin: 10px 0; font-size: 0.95rem;">
+              Creación de proyectos, coordinación de eventos académi-empresariales e impartición de herramientas
+              metodológicas a estudiantes de 1er a 3er trimestre.
+            </p>
+            <ul style="color: var(--text-secondary); padding-left: 20px; font-size: 0.9rem;">
+              <li>Gestión y coordinación de proyectos estudiantiles</li>
+              <li>Organización de eventos académicos masivos</li>
+              <li>Desarrollo de emprendimientos y tutorías</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Container for Vida UNITEC Timeline -->
+      <div class="timeline-wrapper" id="timeline-unitec-content" style="display: none;">
+
+        <div class="timeline-item">
+          <div class="timeline-node" style="border-color: var(--accent-violet);"></div>
+          <div class="timeline-date">2025 - 2026</div>
+          <div class="glass-card timeline-card">
+            <span class="hero-pill"
+              style="background: rgba(139, 92, 246, 0.15); color: #a78bfa; margin-bottom: 10px;">Vida UNITEC</span>
+            <h3>Coordinador General</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+              Máxima responsabilidad directiva en el Equipo de Proyectos Vida UNITEC. Dirección estratégica de equipos
+              multidisciplinarios en la Línea de Investigación de Capital Humano.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-node" style="border-color: var(--accent-cyan);"></div>
+          <div class="timeline-date">2023 - 2024</div>
+          <div class="glass-card timeline-card">
+            <span class="hero-pill" style="margin-bottom: 10px;">Vida UNITEC</span>
+            <h3>Líder de Capital Humano y Gestión Financiera</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+              Liderazgo del staff organizativo, administración de presupuestos, reclutamiento de talentos y gestión de
+              alianzas institucionales.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-node"></div>
+          <div class="timeline-date">2023 - 2023</div>
+          <div class="glass-card timeline-card">
+            <span class="hero-pill" style="margin-bottom: 10px;">Vida UNITEC</span>
+            <h3>Preparador de Proyectos</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+              Capacitación directa a nuevos miembros en metodología de investigación, desarrollo de emprendimientos y
+              estructuración de proyectos de tecnología.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-node"></div>
+          <div class="timeline-date">2022 - 2023</div>
+          <div class="glass-card timeline-card">
+            <span class="hero-pill" style="margin-bottom: 10px;">Vida UNITEC</span>
+            <h3>Estudiante de Vida UNITEC</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem;">
+              Incorporación inicial a la Línea de Investigación de Capital Humano, participando en talleres de formación
+              inicial y células de investigación.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills, Tools & Achievements Section -->
+  <section id="skills">
+    <div class="container">
+      <span class="section-tag">
+        <i class="fa-solid fa-sliders"></i> Competencias &amp; Herramientas
+      </span>
+      <h2 class="section-title">Habilidades &amp; Logros Destacados</h2>
+      <p class="section-subtitle">
+        Dominios técnicos, herramientas digitales y fortalezas de gestión orientadas a resultados.
+      </p>
+
+      <!-- Skill Categories Filter -->
+      <div class="skills-filter">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="tools">Herramientas</button>
+        <button class="filter-btn" data-filter="skills">Habilidades Clave</button>
+        <button class="filter-btn" data-filter="achievements">Logros</button>
+      </div>
+
+      <!-- Tools Grid -->
+      <div class="tools-grid">
+
+        <div class="glass-card tool-card" data-category="tools">
+          <div class="tool-icon"><i class="fa-solid fa-code"></i></div>
+          <div class="tool-info">
+            <div class="tool-name">Visual Studio</div>
+            <div class="rating-dots">
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card tool-card" data-category="tools">
+          <div class="tool-icon"><i class="fa-solid fa-rocket"></i></div>
+          <div class="tool-info">
+            <div class="tool-name">Antigravity</div>
+            <div class="rating-dots">
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card tool-card" data-category="tools">
+          <div class="tool-icon"><i class="fa-solid fa-file-excel"></i></div>
+          <div class="tool-info">
+            <div class="tool-name">Suite de Office</div>
+            <div class="rating-dots">
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card tool-card" data-category="tools">
+          <div class="tool-icon"><i class="fa-solid fa-palette"></i></div>
+          <div class="tool-info">
+            <div class="tool-name">Canva</div>
+            <div class="rating-dots">
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+              <span class="dot active"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Habilidades Clave -->
+        <div class="glass-card tool-card" data-category="skills">
+          <div class="tool-icon" style="color: var(--accent-violet); background: rgba(139, 92, 246, 0.1);"><i
+              class="fa-solid fa-users-gear"></i></div>
+          <div class="tool-info">
+            <div class="tool-name">Liderazgo de Equipos</div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary);">Coordinación de alto rendimiento</p>
+          </div>
+        </div>
+
+        <div class="glass-card tool-card" data-category="skills">
+          <div class="tool-icon" style="color: var(--accent-violet); background: rgba(139, 92, 246, 0.1);"><i
+              class="fa-solid fa-chart-pie"></i></div>
+          <div class="tool-info">
+            <div class="tool-name">Pensamiento Analítico</div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary);">Resolución de problemas TI</p>
+          </div>
+        </div>
+
+        <div class="glass-card tool-card" data-category="skills">
+          <div class="tool-icon" style="color: var(--accent-violet); background: rgba(139, 92, 246, 0.1);"><i
+              class="fa-solid fa-list-check"></i></div>
+          <div class="tool-info">
+            <div class="tool-name">Recopilación de Requerimientos</div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary);">Análisis de sistemas</p>
+          </div>
+        </div>
+
+        <div class="glass-card tool-card" data-category="skills">
+          <div class="tool-icon" style="color: var(--accent-violet); background: rgba(139, 92, 246, 0.1);"><i
+              class="fa-solid fa-lightbulb"></i></div>
+          <div class="tool-info">
+            <div class="tool-name">Desarrollo de Emprendimientos</div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary);">Gestión metodológica</p>
+          </div>
+        </div>
+
+        <!-- Logros -->
+        <div class="glass-card tool-card" data-category="achievements">
+          <div class="tool-icon" style="color: var(--accent-amber); background: rgba(245, 158, 11, 0.1);"><i
+              class="fa-solid fa-trophy"></i></div>
+          <div class="tool-info">
+            <div class="tool-name">Promedio Destacado</div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary);">Área de Ingeniería en Información</p>
+          </div>
+        </div>
+
+        <div class="glass-card tool-card" data-category="achievements">
+          <div class="tool-icon" style="color: var(--accent-amber); background: rgba(245, 158, 11, 0.1);"><i
+              class="fa-solid fa-globe"></i></div>
+          <div class="tool-info">
+            <div class="tool-name">Implementación de Páginas Web</div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary);">Diseño HTML y herramientas</p>
+          </div>
+        </div>
+
+        <div class="glass-card tool-card" data-category="achievements">
+          <div class="tool-icon" style="color: var(--accent-amber); background: rgba(245, 158, 11, 0.1);"><i
+              class="fa-solid fa-building-user"></i></div>
+          <div class="tool-info">
+            <div class="tool-name">Eventos con Empresas</div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary);">Participación y conexión corporativa</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses Section -->
+  <section id="courses">
+    <div class="container">
+      <span class="section-tag">
+        <i class="fa-solid fa-certificate"></i> Formación Continua
+      </span>
+      <h2 class="section-title">Cursos Relevantes &amp; Certificaciones</h2>
+      <p class="section-subtitle">
+        Capacitación constante en herramientas analíticas, programación y competencias lingüísticas.
+      </p>
+
+      <div class="courses-grid">
+
+        <div class="glass-card course-card">
+          <div class="course-icon"><i class="fa-brands fa-python"></i></div>
+          <div style="flex: 1;">
+            <div class="course-title">Curso ONLINE de Python</div>
+            <div class="course-provider"><i class="fa-solid fa-globe"></i> Daxus LATAM</div>
+            <button class="btn btn-secondary view-cert-btn" data-cert="Certificaciones/Curso Python.pdf"
+              data-title="Certificado: Curso ONLINE de Python (Daxus LATAM)"
+              style="margin-top: 12px; padding: 6px 14px; font-size: 0.85rem;">
+              <i class="fa-solid fa-file-pdf text-gradient"></i> Ver Certificado
+            </button>
+          </div>
+        </div>
+
+        <div class="glass-card course-card">
+          <div class="course-icon" style="color: #10b981; background: rgba(16, 185, 129, 0.1);"><i
+              class="fa-solid fa-table"></i></div>
+          <div style="flex: 1;">
+            <div class="course-title">Curso ONLINE de Excel</div>
+            <div class="course-provider"><i class="fa-solid fa-globe"></i> Empowerdata LATAM</div>
+            <button class="btn btn-secondary view-cert-btn" data-cert="Certificaciones/Curso Excel.pdf"
+              data-title="Certificado: Curso ONLINE de Excel (Empowerdata LATAM)"
+              style="margin-top: 12px; padding: 6px 14px; font-size: 0.85rem;">
+              <i class="fa-solid fa-file-pdf text-gradient"></i> Ver Certificado
+            </button>
+          </div>
+        </div>
+
+        <div class="glass-card course-card">
+          <div class="course-icon" style="color: #f59e0b; background: rgba(245, 158, 11, 0.1);"><i
+              class="fa-solid fa-chart-column"></i></div>
+          <div style="flex: 1;">
+            <div class="course-title">Curso ONLINE de PowerBI</div>
+            <div class="course-provider"><i class="fa-solid fa-globe"></i> ZAKIDATA</div>
+            <button class="btn btn-secondary view-cert-btn" data-cert="Certificaciones/Curso PowerBi.pdf"
+              data-title="Certificado: Curso ONLINE de PowerBI (ZAKIDATA)"
+              style="margin-top: 12px; padding: 6px 14px; font-size: 0.85rem;">
+              <i class="fa-solid fa-file-pdf text-gradient"></i> Ver Certificado
+            </button>
+          </div>
+        </div>
+
+        <div class="glass-card course-card">
+          <div class="course-icon" style="color: #8b5cf6; background: rgba(139, 92, 246, 0.1);"><i
+              class="fa-solid fa-brain"></i></div>
+          <div style="flex: 1;">
+            <div class="course-title">Curso ONLINE de Inteligencia Artificial</div>
+            <div class="course-provider"><i class="fa-solid fa-robot"></i> Daxus LATAM</div>
+            <button class="btn btn-secondary view-cert-btn" data-cert="Certificaciones/Curso IA.pdf"
+              data-title="Certificado: Curso ONLINE de Inteligencia Artificial"
+              style="margin-top: 12px; padding: 6px 14px; font-size: 0.85rem;">
+              <i class="fa-solid fa-file-pdf text-gradient"></i> Ver Certificado
+            </button>
+          </div>
+        </div>
+
+        <div class="glass-card course-card">
+          <div class="course-icon" style="color: #06b6d4; background: rgba(6, 182, 212, 0.1);"><i
+              class="fa-solid fa-language"></i></div>
+          <div>
+            <div class="course-title">Inglés Profesional</div>
+            <div class="course-provider"><i class="fa-solid fa-user-ninja"></i> Tr. Fabiola (@itsmeteacherfabiola)</div>
+          </div>
+        </div>
+
+        <div class="glass-card course-card">
+          <div class="course-icon" style="color: #3b82f6; background: rgba(59, 130, 246, 0.1);"><i
+              class="fa-solid fa-person-swimming"></i></div>
+          <div>
+            <div class="course-title">Natación &amp; Disciplina Deportiva</div>
+            <div class="course-provider"><i class="fa-solid fa-water"></i> AQUASPORTS</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Socials Section -->
+  <section id="contact">
+    <div class="container">
+      <span class="section-tag">
+        <i class="fa-solid fa-paper-plane"></i> Contacto Directo
+      </span>
+      <h2 class="section-title">¿Hablamos de tu próximo proyecto?</h2>
+      <p class="section-subtitle">
+        Estoy disponible para oportunidades laborales, consultorías de automatización de procesos TI y coordinación de
+        proyectos.
+      </p>
+
+      <div class="contact-grid">
+        <div>
+          <div class="contact-card-item" id="copy-email-btn" style="cursor: pointer;"
+            title="Haz clic para copiar el email">
+            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div>
+              <h4 style="font-size: 0.9rem; color: var(--text-secondary);">Correo Electrónico</h4>
+              <p style="font-weight: 700; color: var(--text-primary);">LUISMANUEL1402@GMAIL.COM</p>
+            </div>
+            <i class="fa-regular fa-copy" style="margin-left: auto; color: var(--accent-cyan);"></i>
+          </div>
+
+          <div class="contact-card-item" id="copy-phone-btn" style="cursor: pointer;"
+            title="Haz clic para copiar el teléfono">
+            <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+            <div>
+              <h4 style="font-size: 0.9rem; color: var(--text-secondary);">Teléfono / WhatsApp</h4>
+              <p style="font-weight: 700; color: var(--text-primary);">(+58) 424-4598847</p>
+            </div>
+            <i class="fa-regular fa-copy" style="margin-left: auto; color: var(--accent-cyan);"></i>
+          </div>
+
+          <div class="contact-card-item">
+            <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <h4 style="font-size: 0.9rem; color: var(--text-secondary);">Ubicación</h4>
+              <p style="font-weight: 700; color: var(--text-primary);">Valencia, Estado Carabobo, Venezuela</p>
+            </div>
+          </div>
+
+          <!-- Social Links -->
+          <div style="display: flex; gap: 16px; margin-top: 24px;">
+            <a href="https://linkedin.com/in/LuisManuelGarciaRivero" target="_blank" class="btn btn-secondary btn-icon"
+              title="LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/LuismanuelGR" target="_blank" class="btn btn-secondary btn-icon" title="GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://instagram.com/LUISMANUELGARCIARIVERO" target="_blank" class="btn btn-secondary btn-icon"
+              title="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Interactive Contact Form -->
+        <form class="glass-card" id="contact-form" action="https://formsubmit.co/luismanuel1402@gmail.com" method="POST">
+          <h3 style="margin-bottom: 20px;"><i class="fa-solid fa-comment-dots text-gradient"
+              style="margin-right: 10px;"></i> Enviar Mensaje Directo</h3>
+
+          <!-- FormSubmit Configuration -->
+          <input type="hidden" name="_subject" value="Nuevo Mensaje de Contacto desde Portafolio Web - Luis Manuel">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+
+          <div class="form-group">
+            <label class="form-label" for="form-name">Nombre Completo</label>
+            <input type="text" id="form-name" name="Nombre" class="form-input" placeholder="Tu nombre o empresa" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="form-email">Correo Electrónico</label>
+            <input type="email" id="form-email" name="Email" class="form-input" placeholder="tu@correo.com" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="form-message">Mensaje</label>
+            <textarea id="form-message" name="Mensaje" class="form-textarea" rows="4"
+              placeholder="Escribe aquí tu mensaje o propuesta de proyecto..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            <i class="fa-solid fa-paper-plane"></i> Enviar Mensaje
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2026 <strong>Luis Manuel García Rivero</strong>. Todos los derechos reservados.</p>
+      <p style="font-size: 0.8rem; margin-top: 6px; color: var(--text-muted);">
+        Diseñado con tecnología web interactiva de alto rendimiento | Ingeniero en Información
+      </p>
+    </div>
+  </footer>
+
+  <!-- Modal Dialog: SISPRO Details -->
+  <div class="modal-overlay" id="sispro-modal">
+    <div class="modal-container">
+      <button class="modal-close-btn" id="close-sispro-modal">&times;</button>
+
+      <span class="hero-pill" style="margin-bottom: 16px;">Asignación Especial de Grado | Papeles Venezolanos,
+        C.A.</span>
+      <h2 style="font-size: 2rem; margin-bottom: 16px;" class="text-gradient">
+        Sistema SISPRO - Mejora &amp; Automatización de Procesos
+      </h2>
+
+      <div style="color: var(--text-secondary); line-height: 1.7; font-size: 1rem;">
+        <p style="margin-bottom: 16px;">
+          El <strong>Sistema SISPRO</strong> fue concebido e implementado en las áreas productivas de la empresa
+          <strong>Papeles Venezolanos, C.A.</strong> con el objetivo fundamental de resolver cuellos de botella
+          informáticos, digitalizar el flujo de información en plantas de manufactura y eliminar procesos manuales en
+          papel.
+        </p>
+
+        <h4 style="color: var(--text-primary); margin: 20px 0 10px; font-size: 1.2rem;">
+          <i class="fa-solid fa-circle-check text-gradient"></i> Componentes Principales del Sistema:
+        </h4>
+        <ul style="padding-left: 20px; margin-bottom: 20px;">
+          <li><strong>Módulo de Captura de Datos en Planta:</strong> Interfaces adaptadas para operadores de producción
+            en tiempo real.</li>
+          <li><strong>Control de Inventario y Materia Prima:</strong> Trazabilidad completa de insumos y producto
+            terminado.</li>
+          <li><strong>Motor de Reportes e KPI:</strong> Generación automática de gráficos estadísticos para gerencia de
+            TI y operaciones.</li>
+          <li><strong>Módulo de Alertas Preventivas:</strong> Notificaciones tempranas de incidencias o desvíos
+            productivos.</li>
+        </ul>
+
+        <h4 style="color: var(--text-primary); margin: 20px 0 10px; font-size: 1.2rem;">
+          <i class="fa-solid fa-chart-line text-gradient"></i> Resultados e Impacto Empresarial:
+        </h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 10px;">
+          <div
+            style="padding: 16px; background: rgba(6, 182, 212, 0.08); border-radius: var(--radius-md); border: 1px solid rgba(6, 182, 212, 0.2);">
+            <strong style="color: var(--accent-cyan); font-size: 1.4rem;">-65%</strong>
+            <p style="font-size: 0.85rem; margin-top: 4px;">Reducción en tiempo de procesamiento de datos operacionales.
+            </p>
+          </div>
+          <div
+            style="padding: 16px; background: rgba(139, 92, 246, 0.08); border-radius: var(--radius-md); border: 1px solid rgba(139, 92, 246, 0.2);">
+            <strong style="color: var(--accent-violet); font-size: 1.4rem;">100%</strong>
+            <p style="font-size: 0.85rem; margin-top: 4px;">Digitalización integral del seguimiento de producción.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Dialog: Certificate Viewer -->
+  <div class="modal-overlay" id="cert-modal">
+    <div class="modal-container" style="max-width: 900px; width: 95%;">
+      <button class="modal-close-btn" id="close-cert-modal">&times;</button>
+
+      <span class="hero-pill" style="margin-bottom: 12px;">Visualizador de Certificados</span>
+      <h2 style="font-size: 1.6rem; margin-bottom: 16px;" class="text-gradient" id="cert-modal-title">
+        Certificado Académico
+      </h2>
+
+      <div
+        style="width: 100%; height: 550px; background: rgba(0, 0, 0, 0.4); border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-color);">
+        <iframe id="cert-iframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
+      </div>
+
+      <div
+        style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-top: 20px;">
+        <a id="cert-download-link" href="#" target="_blank" class="btn btn-primary">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir / Descargar PDF en nueva pestaña
+        </a>
+        <button class="btn btn-secondary" id="close-cert-modal-btn">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast" id="toast-notification">
+    <i class="fa-solid fa-circle-check" style="color: var(--accent-cyan); font-size: 1.4rem;"></i>
+    <span id="toast-message">Mensaje enviado exitosamente.</span>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+
+</html>
