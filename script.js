@@ -120,6 +120,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Helper for fast, smooth card filter transitions without grid layout jumps
+  function animateCardFilter(cards, attrName, filterValue) {
+    cards.forEach(card => {
+      // Clear staggered scroll-reveal delay so all cards filter synchronously
+      card.style.transitionDelay = '0s';
+
+      const val = card.getAttribute(attrName);
+      const isMatch = filterValue === 'all' || val === filterValue;
+
+      if (isMatch) {
+        card.classList.remove('filter-hidden');
+        card.classList.remove('filter-visible');
+        void card.offsetWidth; // Trigger DOM reflow to restart CSS keyframe
+        card.classList.add('filter-visible');
+      } else {
+        card.classList.remove('filter-visible');
+        card.classList.add('filter-hidden');
+      }
+    });
+  }
+
   // ----------------------------------------------------
   // 5. Skills & Tools Category Filter
   // ----------------------------------------------------
@@ -130,19 +151,23 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
       const filter = btn.getAttribute('data-filter');
+      animateCardFilter(toolCards, 'data-category', filter);
+    });
+  });
 
-      toolCards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        if (filter === 'all' || category === filter) {
-          card.style.display = 'flex';
-          card.style.opacity = '1';
-        } else {
-          card.style.display = 'none';
-          card.style.opacity = '0';
-        }
-      });
+  // ----------------------------------------------------
+  // 5b. Courses Institution Filter
+  // ----------------------------------------------------
+  const courseFilterBtns = document.querySelectorAll('.courses-filter .filter-btn');
+  const courseCards = document.querySelectorAll('.courses-grid .course-card');
+
+  courseFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      courseFilterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+      animateCardFilter(courseCards, 'data-institution', filter);
     });
   });
 
@@ -322,6 +347,10 @@ document.addEventListener('DOMContentLoaded', () => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
+          // Reset staggered transition-delay after initial entrance so filtering is instant
+          setTimeout(() => {
+            entry.target.style.transitionDelay = '0s';
+          }, 600);
           // Unobserve once visible to free resources on mobile
           revealObserver.unobserve(entry.target);
         }

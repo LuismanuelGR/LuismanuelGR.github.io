@@ -10,6 +10,10 @@
   <meta name="keywords"
     content="Luis Manuel Garcia Rivero, Ingeniero en Informacion, Portafolio, SISPRO, Papeles Venezolanos, Vida UNITEC, Valencia Venezuela">
 
+  <!-- Favicon Briefcase Icon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,7 +56,8 @@
       <button class="theme-toggle-btn" id="theme-toggle" title="Cambiar Tema (Oscuro/Claro)">
         <i class="fa-solid fa-moon" id="theme-icon"></i>
       </button>
-      <a href="CV_Luis_Manuel_Garcia_Rivero.pdf" target="_blank" download="CV_Luis_Manuel_Garcia_Rivero.pdf" class="btn btn-secondary btn-icon" id="download-cv-btn" title="Descargar CV Completo (PDF)">
+      <a href="CV_Luis_Manuel_Garcia_Rivero.pdf" target="_blank" download="CV_Luis_Manuel_Garcia_Rivero.pdf"
+        class="btn btn-secondary btn-icon" id="download-cv-btn" title="Descargar CV Completo (PDF)">
         <i class="fa-solid fa-file-pdf"></i>
       </a>
       <button class="mobile-toggle" id="mobile-toggle">
@@ -83,7 +88,7 @@
 
           <p class="hero-bio">
             Especialista en la creación de aplicaciones web orientadas a la optimización y automatización de procesos
-            empresariales. Cuento con sólida experiencia en la gestión integral de proyectos, desde su planificación
+            empresariales. Cuento con experiencia en la gestión integral de proyectos, desde su planificación
             hasta la implementación en organizaciones de diversa escala.
           </p>
 
@@ -145,7 +150,7 @@
             <div class="stat-label">Compromiso en Gestión de TI</div>
           </div>
           <div class="glass-card stat-card">
-            <div class="stat-number" data-target="5">0</div>
+            <div class="stat-number" data-target="6">0</div>
             <div class="stat-label">Cursos de Especialización</div>
           </div>
         </div>
@@ -500,6 +505,15 @@
           </div>
         </div>
 
+        <div class="glass-card tool-card" data-category="skills">
+          <div class="tool-icon" style="color: var(--accent-cyan); background: rgba(6, 182, 212, 0.1);"><i
+              class="fa-solid fa-language"></i></div>
+          <div class="tool-info">
+            <div class="tool-name">Inglés</div>
+            <p style="font-size: 0.8rem; color: var(--text-secondary);">Competencia Lingüística</p>
+          </div>
+        </div>
+
         <!-- Logros -->
         <div class="glass-card tool-card" data-category="achievements">
           <div class="tool-icon" style="color: var(--accent-amber); background: rgba(245, 158, 11, 0.1);"><i
@@ -543,9 +557,19 @@
         Capacitación constante en herramientas analíticas, programación y competencias lingüísticas.
       </p>
 
+      <!-- Course Institution Filter -->
+      <div class="courses-filter">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="linkedin">LinkedIn Learning</button>
+        <button class="filter-btn" data-filter="daxus">Daxus LATAM</button>
+        <button class="filter-btn" data-filter="empowerdata">Empowerdata LATAM</button>
+        <button class="filter-btn" data-filter="zakidata">ZAKIDATA</button>
+        <button class="filter-btn" data-filter="aquasports">AQUASPORTS</button>
+      </div>
+
       <div class="courses-grid">
 
-        <div class="glass-card course-card">
+        <div class="glass-card course-card" data-institution="daxus">
           <div class="course-icon"><i class="fa-brands fa-python"></i></div>
           <div style="flex: 1;">
             <div class="course-title">Curso ONLINE de Python</div>
@@ -558,7 +582,7 @@
           </div>
         </div>
 
-        <div class="glass-card course-card">
+        <div class="glass-card course-card" data-institution="empowerdata">
           <div class="course-icon" style="color: #10b981; background: rgba(16, 185, 129, 0.1);"><i
               class="fa-solid fa-table"></i></div>
           <div style="flex: 1;">
@@ -572,7 +596,7 @@
           </div>
         </div>
 
-        <div class="glass-card course-card">
+        <div class="glass-card course-card" data-institution="zakidata">
           <div class="course-icon" style="color: #f59e0b; background: rgba(245, 158, 11, 0.1);"><i
               class="fa-solid fa-chart-column"></i></div>
           <div style="flex: 1;">
@@ -586,7 +610,7 @@
           </div>
         </div>
 
-        <div class="glass-card course-card">
+        <div class="glass-card course-card" data-institution="daxus">
           <div class="course-icon" style="color: #8b5cf6; background: rgba(139, 92, 246, 0.1);"><i
               class="fa-solid fa-brain"></i></div>
           <div style="flex: 1;">
@@ -600,16 +624,37 @@
           </div>
         </div>
 
-        <div class="glass-card course-card">
-          <div class="course-icon" style="color: #06b6d4; background: rgba(6, 182, 212, 0.1);"><i
-              class="fa-solid fa-language"></i></div>
-          <div>
-            <div class="course-title">Inglés Profesional</div>
-            <div class="course-provider"><i class="fa-solid fa-user-ninja"></i> Tr. Fabiola (@itsmeteacherfabiola)</div>
+        <div class="glass-card course-card" data-institution="linkedin">
+          <div class="course-icon" style="color: #0a66c2; background: rgba(10, 102, 194, 0.1);"><i
+              class="fa-brands fa-linkedin"></i></div>
+          <div style="flex: 1;">
+            <div class="course-title">What is Generative AI</div>
+            <div class="course-provider"><i class="fa-brands fa-linkedin"></i> LinkedIn Learning</div>
+            <button class="btn btn-secondary view-cert-btn"
+              data-cert="Certificaciones/What is Generative AI (LinkedIn Learning).pdf"
+              data-title="Certificado: What is Generative AI (LinkedIn Learning)"
+              style="margin-top: 12px; padding: 6px 14px; font-size: 0.85rem;">
+              <i class="fa-solid fa-file-pdf text-gradient"></i> Ver Certificado
+            </button>
           </div>
         </div>
 
-        <div class="glass-card course-card">
+        <div class="glass-card course-card" data-institution="linkedin">
+          <div class="course-icon" style="color: #06b6d4; background: rgba(6, 182, 212, 0.1);"><i
+              class="fa-solid fa-award"></i></div>
+          <div style="flex: 1;">
+            <div class="course-title">What is Generative AI (NASBA)</div>
+            <div class="course-provider"><i class="fa-solid fa-graduation-cap"></i> NASBA / LinkedIn Learning</div>
+            <button class="btn btn-secondary view-cert-btn"
+              data-cert="Certificaciones/What is Generative AI (National Association of State Boards of Accountancy - NASBA).pdf"
+              data-title="Certificado: What is Generative AI (NASBA - LinkedIn Learning)"
+              style="margin-top: 12px; padding: 6px 14px; font-size: 0.85rem;">
+              <i class="fa-solid fa-file-pdf text-gradient"></i> Ver Certificado
+            </button>
+          </div>
+        </div>
+
+        <div class="glass-card course-card" data-institution="aquasports">
           <div class="course-icon" style="color: #3b82f6; background: rgba(59, 130, 246, 0.1);"><i
               class="fa-solid fa-person-swimming"></i></div>
           <div>
@@ -681,7 +726,8 @@
         </div>
 
         <!-- Interactive Contact Form -->
-        <form class="glass-card" id="contact-form" action="https://formsubmit.co/luismanuel1402@gmail.com" method="POST">
+        <form class="glass-card" id="contact-form" action="https://formsubmit.co/luismanuel1402@gmail.com"
+          method="POST">
           <h3 style="margin-bottom: 20px;"><i class="fa-solid fa-comment-dots text-gradient"
               style="margin-right: 10px;"></i> Enviar Mensaje Directo</h3>
 
@@ -692,7 +738,8 @@
 
           <div class="form-group">
             <label class="form-label" for="form-name">Nombre Completo</label>
-            <input type="text" id="form-name" name="Nombre" class="form-input" placeholder="Tu nombre o empresa" required>
+            <input type="text" id="form-name" name="Nombre" class="form-input" placeholder="Tu nombre o empresa"
+              required>
           </div>
 
           <div class="form-group">

@@ -751,7 +751,8 @@ section {
 }
 
 /* Skills & Tools Matrix */
-.skills-filter {
+.skills-filter,
+.courses-filter {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -773,7 +774,33 @@ section {
 .filter-btn.active, .filter-btn:hover {
   border-color: var(--accent-cyan);
   color: var(--accent-cyan);
-  background: rgba(6, 182, 212, 0.1);
+  background: rgba(6, 182, 212, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(6, 182, 212, 0.2);
+}
+
+/* Smooth & Grid-Safe Filter Animations for Cards */
+.tool-card.filter-hidden,
+.course-card.filter-hidden {
+  display: none !important;
+}
+
+.tool-card.filter-visible,
+.course-card.filter-visible {
+  display: flex !important;
+  transition-delay: 0s !important;
+  animation: filterCardIn 0.26s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes filterCardIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.94) translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .tools-grid {
