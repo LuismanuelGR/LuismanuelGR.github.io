@@ -39,24 +39,42 @@ document.addEventListener('DOMContentLoaded', () => {
   // ----------------------------------------------------
   const mobileToggle = document.getElementById('mobile-toggle');
   const navMenu = document.getElementById('nav-menu');
+  const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
 
   if (mobileToggle && navMenu) {
-    mobileToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
+    function setMobileMenuOpen(isOpen) {
+      navMenu.classList.toggle('active', isOpen);
+      if (mobileMenuBackdrop) mobileMenuBackdrop.classList.toggle('active', isOpen);
+      mobileToggle.setAttribute('aria-expanded', String(isOpen));
+      mobileToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
       const icon = mobileToggle.querySelector('i');
-      if (navMenu.classList.contains('active')) {
-        icon.className = 'fa-solid fa-xmark';
-      } else {
-        icon.className = 'fa-solid fa-bars';
-      }
+      if (icon) icon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+    }
+
+    mobileToggle.addEventListener('click', () => {
+      setMobileMenuOpen(!navMenu.classList.contains('active'));
     });
+
+    if (mobileMenuBackdrop) {
+      mobileMenuBackdrop.addEventListener('click', () => setMobileMenuOpen(false));
+    }
 
     // Close mobile menu when clicking a link
     navMenu.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        mobileToggle.querySelector('i').className = 'fa-solid fa-bars';
-      });
+      link.addEventListener('click', () => setMobileMenuOpen(false));
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+        setMobileMenuOpen(false);
+        mobileToggle.focus();
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+        setMobileMenuOpen(false);
+      }
     });
   }
 
@@ -148,9 +166,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const toolCards = document.querySelectorAll('.tools-grid .tool-card');
 
   filterBtns.forEach(btn => {
+    btn.setAttribute('aria-pressed', String(btn.classList.contains('active')));
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
+      filterBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
       const filter = btn.getAttribute('data-filter');
       animateCardFilter(toolCards, 'data-category', filter);
     });
@@ -163,9 +186,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const courseCards = document.querySelectorAll('.courses-grid .course-card');
 
   courseFilterBtns.forEach(btn => {
+    btn.setAttribute('aria-pressed', String(btn.classList.contains('active')));
     btn.addEventListener('click', () => {
-      courseFilterBtns.forEach(b => b.classList.remove('active'));
+      courseFilterBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
       const filter = btn.getAttribute('data-filter');
       animateCardFilter(courseCards, 'data-institution', filter);
     });
@@ -208,24 +236,49 @@ document.addEventListener('DOMContentLoaded', () => {
   // ----------------------------------------------------
   const certModal = document.getElementById('cert-modal');
   const certIframe = document.getElementById('cert-iframe');
+  const certViewer = document.querySelector('.cert-viewer');
   const certModalTitle = document.getElementById('cert-modal-title');
+  const certOpenLink = document.getElementById('cert-open-link');
   const certDownloadLink = document.getElementById('cert-download-link');
   const closeCertBtn = document.getElementById('close-cert-modal');
   const closeCertBtnFooter = document.getElementById('close-cert-modal-btn');
   const viewCertBtns = document.querySelectorAll('.view-cert-btn');
+  let activeCertAspectRatio = 1.415;
 
-  function openCertModal(pdfUrl, title) {
+  function fitCertificateViewer() {
+    if (!certViewer || !certViewer.parentElement) return;
+    const modalStyles = window.getComputedStyle(certViewer.parentElement);
+    const horizontalPadding = parseFloat(modalStyles.paddingLeft) + parseFloat(modalStyles.paddingRight);
+    const availableWidth = certViewer.parentElement.clientWidth - horizontalPadding;
+    const availableHeight = window.innerHeight * 0.6;
+    certViewer.style.width = `${Math.min(availableWidth, availableHeight * activeCertAspectRatio)}px`;
+  }
+
+  function openCertModal(pdfUrl, title, aspectRatio) {
     if (!certModal) return;
-    if (certIframe) certIframe.src = pdfUrl;
+    const parsedAspectRatio = Number(aspectRatio);
+    activeCertAspectRatio = Number.isFinite(parsedAspectRatio) && parsedAspectRatio > 0
+      ? parsedAspectRatio
+      : 1.415;
+    if (certViewer) certViewer.style.aspectRatio = String(activeCertAspectRatio);
+    if (certIframe) certIframe.src = `${pdfUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`;
     if (certModalTitle) certModalTitle.innerText = title || 'Certificado Académico';
+    if (certOpenLink) certOpenLink.href = pdfUrl;
     if (certDownloadLink) certDownloadLink.href = pdfUrl;
     certModal.classList.add('active');
+    fitCertificateViewer();
   }
 
   function closeCertModal() {
     if (!certModal) return;
     certModal.classList.remove('active');
     if (certIframe) certIframe.src = '';
+    if (certViewer) {
+      certViewer.style.removeProperty('aspect-ratio');
+      certViewer.style.removeProperty('width');
+    }
+    if (certOpenLink) certOpenLink.href = '#';
+    if (certDownloadLink) certDownloadLink.href = '#';
   }
 
   viewCertBtns.forEach(btn => {
@@ -233,12 +286,15 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const certUrl = btn.getAttribute('data-cert');
       const title = btn.getAttribute('data-title');
-      openCertModal(certUrl, title);
+      openCertModal(certUrl, title, btn.getAttribute('data-aspect-ratio'));
     });
   });
 
   if (closeCertBtn) closeCertBtn.addEventListener('click', closeCertModal);
   if (closeCertBtnFooter) closeCertBtnFooter.addEventListener('click', closeCertModal);
+  window.addEventListener('resize', () => {
+    if (certModal && certModal.classList.contains('active')) fitCertificateViewer();
+  });
 
   if (certModal) {
     certModal.addEventListener('click', (e) => {
@@ -368,11 +424,33 @@ document.addEventListener('DOMContentLoaded', () => {
   // ----------------------------------------------------
   const sections = document.querySelectorAll('section');
   const navLinks = document.querySelectorAll('.nav-link');
+  const backToTopBtn = document.getElementById('back-to-top');
   let scrollTicking = false;
+
+  function updateBackToTopVisibility() {
+    if (!backToTopBtn) return;
+    const isPastIntro = window.scrollY > 320;
+    backToTopBtn.classList.toggle('is-visible', isPastIntro);
+    backToTopBtn.setAttribute('aria-hidden', String(!isPastIntro));
+  }
+
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        window.scrollTo(0, 0);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  }
+
+  updateBackToTopVisibility();
 
   window.addEventListener('scroll', () => {
     if (!scrollTicking) {
       window.requestAnimationFrame(() => {
+        updateBackToTopVisibility();
+
         let current = '';
         sections.forEach(section => {
           const sectionTop = section.offsetTop - 160;

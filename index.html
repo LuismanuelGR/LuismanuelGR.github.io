@@ -36,6 +36,8 @@
     <div class="glow-orb glow-orb-3"></div>
   </div>
 
+  <div class="mobile-menu-backdrop" id="mobile-menu-backdrop" aria-hidden="true"></div>
+
   <!-- Floating Glass Navbar -->
   <nav class="navbar">
     <a href="#hero" class="nav-brand">
@@ -60,7 +62,8 @@
         class="btn btn-secondary btn-icon" id="download-cv-btn" title="Descargar CV Completo (PDF)">
         <i class="fa-solid fa-file-pdf"></i>
       </a>
-      <button class="mobile-toggle" id="mobile-toggle">
+      <button class="mobile-toggle" id="mobile-toggle" type="button" aria-label="Abrir menú" aria-controls="nav-menu"
+        aria-expanded="false">
         <i class="fa-solid fa-bars"></i>
       </button>
     </div>
@@ -554,28 +557,28 @@
       </span>
       <h2 class="section-title">Cursos Relevantes &amp; Certificaciones</h2>
       <p class="section-subtitle">
-        Capacitación constante en herramientas analíticas, programación y competencias lingüísticas.
+        Certificaciones en inteligencia artificial, análisis de datos, programación y servicios en la nube.
       </p>
 
-      <!-- Course Institution Filter -->
       <div class="courses-filter">
         <button class="filter-btn active" data-filter="all">Todos</button>
-        <button class="filter-btn" data-filter="linkedin">LinkedIn Learning</button>
         <button class="filter-btn" data-filter="daxus">Daxus LATAM</button>
+        <button class="filter-btn" data-filter="aws">AWS Skill Builder</button>
         <button class="filter-btn" data-filter="empowerdata">Empowerdata LATAM</button>
         <button class="filter-btn" data-filter="zakidata">ZAKIDATA</button>
-        <button class="filter-btn" data-filter="aquasports">AQUASPORTS</button>
+        <button class="filter-btn" data-filter="linkedin">LinkedIn Learning</button>
+        <button class="filter-btn" data-filter="nasba">NASBA</button>
       </div>
 
       <div class="courses-grid">
-
         <div class="glass-card course-card" data-institution="daxus">
           <div class="course-icon"><i class="fa-brands fa-python"></i></div>
           <div style="flex: 1;">
-            <div class="course-title">Curso ONLINE de Python</div>
+            <div class="course-title">Curso de Python</div>
             <div class="course-provider"><i class="fa-solid fa-globe"></i> Daxus LATAM</div>
             <button class="btn btn-secondary view-cert-btn" data-cert="Certificaciones/Curso Python.pdf"
-              data-title="Certificado: Curso ONLINE de Python (Daxus LATAM)"
+              data-aspect-ratio="1.415"
+              data-title="Certificado: Curso de Python (Daxus LATAM)"
               style="margin-top: 12px; padding: 6px 14px; font-size: 0.85rem;">
               <i class="fa-solid fa-file-pdf text-gradient"></i> Ver Certificado
             </button>
@@ -586,10 +589,11 @@
           <div class="course-icon" style="color: #10b981; background: rgba(16, 185, 129, 0.1);"><i
               class="fa-solid fa-table"></i></div>
           <div style="flex: 1;">
-            <div class="course-title">Curso ONLINE de Excel</div>
+            <div class="course-title">Curso de Excel</div>
             <div class="course-provider"><i class="fa-solid fa-globe"></i> Empowerdata LATAM</div>
             <button class="btn btn-secondary view-cert-btn" data-cert="Certificaciones/Curso Excel.pdf"
-              data-title="Certificado: Curso ONLINE de Excel (Empowerdata LATAM)"
+              data-aspect-ratio="1.415"
+              data-title="Certificado: Curso de Excel (Empowerdata LATAM)"
               style="margin-top: 12px; padding: 6px 14px; font-size: 0.85rem;">
               <i class="fa-solid fa-file-pdf text-gradient"></i> Ver Certificado
             </button>
@@ -600,10 +604,11 @@
           <div class="course-icon" style="color: #f59e0b; background: rgba(245, 158, 11, 0.1);"><i
               class="fa-solid fa-chart-column"></i></div>
           <div style="flex: 1;">
-            <div class="course-title">Curso ONLINE de PowerBI</div>
+            <div class="course-title">Curso de Power BI</div>
             <div class="course-provider"><i class="fa-solid fa-globe"></i> ZAKIDATA</div>
             <button class="btn btn-secondary view-cert-btn" data-cert="Certificaciones/Curso PowerBi.pdf"
-              data-title="Certificado: Curso ONLINE de PowerBI (ZAKIDATA)"
+              data-aspect-ratio="1.415"
+              data-title="Certificado: Curso de Power BI (ZAKIDATA)"
               style="margin-top: 12px; padding: 6px 14px; font-size: 0.85rem;">
               <i class="fa-solid fa-file-pdf text-gradient"></i> Ver Certificado
             </button>
@@ -614,10 +619,41 @@
           <div class="course-icon" style="color: #8b5cf6; background: rgba(139, 92, 246, 0.1);"><i
               class="fa-solid fa-brain"></i></div>
           <div style="flex: 1;">
-            <div class="course-title">Curso ONLINE de Inteligencia Artificial</div>
+            <div class="course-title">Curso de Inteligencia Artificial</div>
             <div class="course-provider"><i class="fa-solid fa-robot"></i> Daxus LATAM</div>
             <button class="btn btn-secondary view-cert-btn" data-cert="Certificaciones/Curso IA.pdf"
-              data-title="Certificado: Curso ONLINE de Inteligencia Artificial"
+              data-aspect-ratio="1.415"
+              data-title="Certificado: Curso de Inteligencia Artificial (Daxus LATAM)"
+              style="margin-top: 12px; padding: 6px 14px; font-size: 0.85rem;">
+              <i class="fa-solid fa-file-pdf text-gradient"></i> Ver Certificado
+            </button>
+          </div>
+        </div>
+
+        <div class="glass-card course-card" data-institution="daxus">
+          <div class="course-icon" style="color: #8b5cf6; background: rgba(139, 92, 246, 0.1);"><i
+              class="fa-solid fa-robot"></i></div>
+          <div style="flex: 1;">
+            <div class="course-title">Agentes de IA</div>
+            <div class="course-provider"><i class="fa-solid fa-globe"></i> Daxus LATAM</div>
+            <button class="btn btn-secondary view-cert-btn" data-aspect-ratio="1.415"
+              data-cert="Certificaciones/Agentes de IA (Daxus LATAM).pdf"
+              data-title="Certificado: Agentes de IA (Daxus LATAM)"
+              style="margin-top: 12px; padding: 6px 14px; font-size: 0.85rem;">
+              <i class="fa-solid fa-file-pdf text-gradient"></i> Ver Certificado
+            </button>
+          </div>
+        </div>
+
+        <div class="glass-card course-card" data-institution="aws">
+          <div class="course-icon" style="color: #f59e0b; background: rgba(245, 158, 11, 0.1);"><i
+              class="fa-brands fa-aws"></i></div>
+          <div style="flex: 1;">
+            <div class="course-title">AWS Cloud Practitioner Essentials</div>
+            <div class="course-provider"><i class="fa-solid fa-cloud"></i> AWS Skill Builder</div>
+            <button class="btn btn-secondary view-cert-btn" data-aspect-ratio="1.415"
+              data-cert="Certificaciones/AWS Cloud Practitioner Essentials (AWS Skill Builder).pdf"
+              data-title="Certificado: AWS Cloud Practitioner Essentials (AWS Skill Builder)"
               style="margin-top: 12px; padding: 6px 14px; font-size: 0.85rem;">
               <i class="fa-solid fa-file-pdf text-gradient"></i> Ver Certificado
             </button>
@@ -630,7 +666,7 @@
           <div style="flex: 1;">
             <div class="course-title">What is Generative AI</div>
             <div class="course-provider"><i class="fa-brands fa-linkedin"></i> LinkedIn Learning</div>
-            <button class="btn btn-secondary view-cert-btn"
+            <button class="btn btn-secondary view-cert-btn" data-aspect-ratio="1.294"
               data-cert="Certificaciones/What is Generative AI (LinkedIn Learning).pdf"
               data-title="Certificado: What is Generative AI (LinkedIn Learning)"
               style="margin-top: 12px; padding: 6px 14px; font-size: 0.85rem;">
@@ -639,30 +675,20 @@
           </div>
         </div>
 
-        <div class="glass-card course-card" data-institution="linkedin">
+        <div class="glass-card course-card" data-institution="nasba">
           <div class="course-icon" style="color: #06b6d4; background: rgba(6, 182, 212, 0.1);"><i
               class="fa-solid fa-award"></i></div>
           <div style="flex: 1;">
             <div class="course-title">What is Generative AI (NASBA)</div>
-            <div class="course-provider"><i class="fa-solid fa-graduation-cap"></i> NASBA / LinkedIn Learning</div>
-            <button class="btn btn-secondary view-cert-btn"
+            <div class="course-provider"><i class="fa-solid fa-graduation-cap"></i> National Association of State Boards of Accountancy</div>
+            <button class="btn btn-secondary view-cert-btn" data-aspect-ratio="1.294"
               data-cert="Certificaciones/What is Generative AI (National Association of State Boards of Accountancy - NASBA).pdf"
-              data-title="Certificado: What is Generative AI (NASBA - LinkedIn Learning)"
+              data-title="Certificado: What is Generative AI (NASBA)"
               style="margin-top: 12px; padding: 6px 14px; font-size: 0.85rem;">
               <i class="fa-solid fa-file-pdf text-gradient"></i> Ver Certificado
             </button>
           </div>
         </div>
-
-        <div class="glass-card course-card" data-institution="aquasports">
-          <div class="course-icon" style="color: #3b82f6; background: rgba(59, 130, 246, 0.1);"><i
-              class="fa-solid fa-person-swimming"></i></div>
-          <div>
-            <div class="course-title">Natación &amp; Disciplina Deportiva</div>
-            <div class="course-provider"><i class="fa-solid fa-water"></i> AQUASPORTS</div>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
@@ -827,27 +853,26 @@
 
   <!-- Modal Dialog: Certificate Viewer -->
   <div class="modal-overlay" id="cert-modal">
-    <div class="modal-container" style="max-width: 900px; width: 95%;">
+    <div class="modal-container cert-modal-container">
       <button class="modal-close-btn" id="close-cert-modal">&times;</button>
 
-      <span class="hero-pill" style="margin-bottom: 12px;">Visualizador de Certificados</span>
-      <h2 style="font-size: 1.6rem; margin-bottom: 16px;" class="text-gradient" id="cert-modal-title">
-        Certificado Académico
-      </h2>
-
-      <div
-        style="width: 100%; height: 550px; background: rgba(0, 0, 0, 0.4); border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-color);">
-        <iframe id="cert-iframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
+      <div class="cert-modal-header">
+        <span class="hero-pill">Visualizador de Certificados</span>
+        <h2 class="text-gradient" id="cert-modal-title">Certificado Académico</h2>
       </div>
 
-      <div
-        style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-top: 20px;">
-        <a id="cert-download-link" href="#" target="_blank" class="btn btn-primary">
-          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir / Descargar PDF en nueva pestaña
+      <div class="cert-viewer">
+        <iframe id="cert-iframe" src="" title="Vista previa del certificado"></iframe>
+      </div>
+
+      <div class="cert-modal-actions">
+        <a id="cert-open-link" href="#" target="_blank" rel="noopener" class="btn btn-secondary">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Abrir en otra pestaña
         </a>
-        <button class="btn btn-secondary" id="close-cert-modal-btn">
-          Cerrar
-        </button>
+        <a id="cert-download-link" href="#" download class="btn btn-primary">
+          <i class="fa-solid fa-download"></i> Descargar certificado
+        </a>
+        <button class="btn btn-secondary" id="close-cert-modal-btn">Cerrar</button>
       </div>
     </div>
   </div>
@@ -857,6 +882,10 @@
     <i class="fa-solid fa-circle-check" style="color: var(--accent-cyan); font-size: 1.4rem;"></i>
     <span id="toast-message">Mensaje enviado exitosamente.</span>
   </div>
+
+  <button class="back-to-top" id="back-to-top" type="button" aria-label="Volver al inicio" aria-hidden="true">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </button>
 
   <!-- JavaScript -->
   <script src="script.js"></script>
